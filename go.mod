@@ -1,14 +1,12 @@
-module dagger-demos
+module deep_into_dagger
 
 go 1.17
 
-require (
-	cuelang.org/go v0.4.2
-	github.com/davecgh/go-spew v1.1.1
-)
+require cuelang.org/go v0.4.2
 
 require (
 	github.com/cockroachdb/apd/v2 v2.0.1 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emicklei/proto v1.6.15 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect
 	github.com/google/uuid v1.2.0 // indirect

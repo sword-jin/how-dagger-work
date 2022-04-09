@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
-	"strings"
+
+	"deep_into_dagger"
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/tools/flow"
@@ -43,20 +43,10 @@ func main() {
 		},
 	)
 
-	printTasks(flow.Tasks(), 0)
+	deep_into_dagger.PrintTasks(flow.Tasks(), 0)
 
 	err = flow.Run(context.TODO())
 	if err != nil {
 		panic(err)
-	}
-}
-
-func printTasks(tasks []*flow.Task, depth int) {
-	prefix := strings.Repeat("    ", depth)
-	for _, task := range tasks {
-		fmt.Printf("%s#%d %s\n", prefix, depth, task.Path().String())
-		if len(task.Dependencies()) > 0 {
-			printTasks(task.Dependencies(), depth+1)
-		}
 	}
 }

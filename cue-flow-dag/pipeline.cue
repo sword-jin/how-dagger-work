@@ -14,12 +14,6 @@ Pipeline: {
 			output: "lint success"
 		}
 
-		test: {
-			isRoot: true
-			input: lint.output
-			output: "Mocha"
-		}
-
 		build: {
 			isRoot: true
 			input: test.output
@@ -27,6 +21,12 @@ Pipeline: {
 				input: "./",
 				output: "./_build"
 			}
+		}
+
+		test: {
+			isRoot: true
+			input: lint.output
+			output: "Mocha"
 		}
 	}
 }

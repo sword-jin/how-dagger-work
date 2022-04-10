@@ -39,6 +39,43 @@ go run main.go deploy-site.cue
 
 - <https://github.com/cue-lang/cue/blob/4136481539/tools/flow/run.go#L58>
 
+can describe a simple pseudo-code:
+
+```go
+// ...
+for {
+    for _, t := range flow.tasks {
+        switch task.status {
+            case Waiting:
+                waiting = true
+            case Ready:
+                t.status = Running
+                // handle task
+                // if no err
+                t.status = Success
+
+                for _, t2 := range flow.tasks {
+                    if t2.status == Waiting && t.IsReady() {
+                        t2.status = Ready
+                    }
+                }
+        }
+    }
+}
+// ...
+
+// Check task is ready for execute
+func (t *Task) IsReady() bool {
+    for _, dep := range t.deps {
+        if dep.status != Success {
+            return false
+        }
+    }
+    return true
+}
+
+```
+
 ### 3. real-world example
 
 ```bash

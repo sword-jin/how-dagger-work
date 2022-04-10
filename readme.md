@@ -35,7 +35,13 @@ go run main.go deploy-site.cue
 ```
 
 `flow` can execute a dag according to dependency trees, **Tasks belonging to the same level of height can be processed in parallel**
-
 **core code**
 
 - <https://github.com/cue-lang/cue/blob/4136481539/tools/flow/run.go#L58>
+
+### 3. real-world example
+
+```bash
+make test -B
+make build -B
+```

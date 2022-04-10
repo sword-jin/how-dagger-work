@@ -20,6 +20,11 @@ dagger.#Plan & {
 			},
 			"./build": write: contents: actions.build.output
 		}
+
+		env: {
+			GOOS: string
+			GOARCH: string
+		}
 	}
 
 	actions: {
@@ -38,9 +43,9 @@ dagger.#Plan & {
 
 			package: "./go-project"
 
-			arch: "arm64"
+			arch: client.env.GOARCH
 
-			os: "darwin"
+			os: client.env.GOOS
 
 			container: go.#Container & {
 				_image: _goimage

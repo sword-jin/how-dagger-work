@@ -8,16 +8,7 @@ import (
 dagger.#Plan & {
 	client: {
 		filesystem: {
-			"../": read: {
-				contents: dagger.#FS
-				exclude: [
-					".vscode",
-					"cue-flow-dag",
-					"cue-flow-execute",
-					".gitignore",
-					"readme.md",
-				]
-			},
+			"../": read: contents: dagger.#FS
 			"./build": write: contents: actions.build.output
 		}
 
@@ -28,14 +19,11 @@ dagger.#Plan & {
 	}
 
 	actions: {
-		_goimage: go.#Image & {
-			version: "1.18"
-		}
-
 		test: go.#Test & {
 			source: client.filesystem."../".read.contents
 		}
 
+		// [this is docs.]
 		build: go.#Build & {
 			_dep: test
 
@@ -46,10 +34,6 @@ dagger.#Plan & {
 			arch: client.env.GOARCH
 
 			os: client.env.GOOS
-
-			container: go.#Container & {
-				_image: _goimage
-			}
 		}
 	}
 }

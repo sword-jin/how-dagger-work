@@ -1,9 +1,7 @@
 
-DEBUG ?= 0
-DAGGER_CMD := dagger
-ifeq ($(DEBUG), 1)
-    DAGGER_CMD=dagger -ldebug --log-format plain
-endif
+LOG_FORMAT := tty
+LOG_LEVEL := info
+DAGGER_CMD := dagger -l$(LOG_LEVEL) --log-format $(LOG_FORMAT)
 
 # GOARCH
 LOCAL_ARCH := $(shell uname -m)

@@ -53,11 +53,13 @@ stages:
   - test
 
 lint:
+    stage: lint
     extends: [.dagger]
     variables:
         ARGS: lint
 
 test:
+    stage: test
     extends: [.dagger]
     variables:
         ARGS: test

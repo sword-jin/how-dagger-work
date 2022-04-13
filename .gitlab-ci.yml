@@ -22,6 +22,9 @@
         DAGGER_LOG_FORMAT: plain
         DAGGER_CACHE_PATH: .dagger-cache
 
+        GOOS: "linux"
+        GOARCH: "amd64"
+
         ARGS: ''
     cache:
         key: dagger-${CI_JOB_NAME}

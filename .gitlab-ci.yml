@@ -38,8 +38,9 @@
             dagger version
     script:
         - |
-            dagger \
+            cd go-project && dagger \
                 do \
+                -p ./go-project \
                 --cache-from type=local,src=${DAGGER_CACHE_PATH} \
                 --cache-to type=local,mode=max,dest=${DAGGER_CACHE_PATH} \
                 ${ARGS}

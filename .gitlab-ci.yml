@@ -48,7 +48,16 @@
                 --cache-to type=local,mode=max,dest=${DAGGER_CACHE_PATH} \
                 ${ARGS}
 
-build:
+stages:
+  - lint
+  - test
+
+lint:
+    extends: [.dagger]
+    variables:
+        ARGS: lint
+
+test:
     extends: [.dagger]
     variables:
         ARGS: test

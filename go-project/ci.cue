@@ -3,6 +3,7 @@ package main
 import (
     "dagger.io/dagger"
     "universe.dagger.io/go"
+	"github.com/dagger/dagger/ci/golangci"
 )
 
 dagger.#Plan & {
@@ -19,15 +20,22 @@ dagger.#Plan & {
 	}
 
 	actions: {
+		_source: client.filesystem["../"].read.contents
+
+		lint: {
+			go: golangci.#Lint & {
+				source:  _source
+				version: "1.45"
+			}
+		}
+
 		test: go.#Test & {
-			source: client.filesystem."../".read.contents
+			source: _source
 		}
 
 		// [this is docs.]
 		build: go.#Build & {
-			_dep: test
-
-			source: client.filesystem."../".read.contents
+			source: _source
 
 			package: "./go-project"
 

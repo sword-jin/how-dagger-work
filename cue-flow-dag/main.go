@@ -10,7 +10,7 @@ import (
 	"cuelang.org/go/tools/flow"
 )
 
-var r cue.Runtime
+var r cue.Runtime // nolint
 
 func main() {
 	if len(os.Args) != 3 {
@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	inst, err := r.Compile(file, b)
+	inst, err := r.Parse(file, b) // nolint
 	if err != nil {
 		panic(err)
 	}
@@ -33,7 +33,7 @@ func main() {
 		&flow.Config{},
 		inst.Value(),
 		func(flowVal cue.Value) (flow.Runner, error) {
-			if !flowVal.Lookup(flag).Exists() {
+			if !flowVal.LookupPath(cue.ParsePath(flag)).Exists() {
 				return nil, nil
 			}
 

@@ -11,7 +11,7 @@ import (
 	"cuelang.org/go/tools/flow"
 )
 
-var r cue.Runtime
+var r cue.Runtime // nolint
 var lg = log.New(os.Stderr, "flow: ", log.Ltime)
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	inst, err := r.Compile(file, b)
+	inst, err := r.Compile(file, b) // nolint
 	if err != nil {
 		panic(err)
 	}
@@ -34,12 +34,12 @@ func main() {
 		&flow.Config{},
 		inst.Value(),
 		func(flowVal cue.Value) (flow.Runner, error) {
-			isTask := flowVal.Lookup("isTask")
+			isTask := flowVal.LookupPath(cue.ParsePath("isTask"))
 			if !isTask.Exists() {
 				return nil, nil
 			}
 
-			sleep, err := flowVal.Lookup("sleep").Int64()
+			sleep, err := flowVal.LookupPath(cue.ParsePath("sleep")).Int64()
 			if err != nil {
 				panic("should mock io duration")
 			}

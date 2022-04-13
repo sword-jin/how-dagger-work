@@ -35,3 +35,6 @@ build:
 
 test:
 	$(DAGGER_CMD) do test
+
+lint:
+	$(DAGGER_CMD) do lint

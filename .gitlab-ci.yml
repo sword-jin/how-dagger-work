@@ -50,4 +50,4 @@
 build:
     extends: [.dagger]
     variables:
-        ARGS: build
+        ARGS: test

@@ -13,7 +13,7 @@
         # Faster than the default, apparently
         DOCKER_DRIVER: overlay2
 
-        DOCKER_VERSION: '20.10'
+        DOCKER_VERSION: '19.03.13'
 
 .dagger:
     extends: [.docker]

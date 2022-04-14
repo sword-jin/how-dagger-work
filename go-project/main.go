@@ -7,4 +7,5 @@ import (
 
 func main() {
 	fmt.Println(deep_into_dagger.Say("Dagger"))
+	// Hello Dagger
 }

@@ -10,7 +10,7 @@
 
 ```bash
 cd cue-flow-dag
-go run main.go basic-1.cue isRoot
+go run main.go basic-1.cue isTask
 ```
 
 `flow` can generate some dependency trees like this:

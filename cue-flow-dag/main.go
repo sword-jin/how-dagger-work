@@ -14,7 +14,7 @@ var r cue.Runtime // nolint
 
 func main() {
 	if len(os.Args) != 3 {
-		panic("Usage: ./main.go *.cue isRoot")
+		panic("Usage: ./main.go *.cue isTask")
 	}
 
 	file := os.Args[1]

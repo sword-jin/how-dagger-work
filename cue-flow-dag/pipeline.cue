@@ -10,12 +10,12 @@ Pipeline: {
 
 	jobs: {
 		lint: {
-			isRoot: true
+			isTask: true
 			output: "lint success"
 		}
 
 		build: {
-			isRoot: true
+			isTask: true
 			input: test.output
 			contents: {
 				input: "./",
@@ -24,7 +24,7 @@ Pipeline: {
 		}
 
 		test: {
-			isRoot: true
+			isTask: true
 			input: lint.output
 			output: "Mocha"
 		}

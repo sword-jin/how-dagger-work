@@ -7,7 +7,7 @@ plan: {
 		labels: [string]: string
 
 		prepare: {
-			isRoot: true
+			isTask: true
 		}
 
 		lint: {

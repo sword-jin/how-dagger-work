@@ -1,8 +1,8 @@
 a: {
 	name: string
-	isRoot: true
+	isTask: true
 }
 b: {
 	name: string
-	isRoot: true
+	isTask: true
 }
